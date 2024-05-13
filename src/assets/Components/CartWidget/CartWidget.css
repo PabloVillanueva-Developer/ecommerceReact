@@ -1,0 +1,15 @@
+.cartWidgetContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50% 50%;
+    background-color: rgb(155, 74, 74);
+    width: 3.5rem;
+    height: 3.5rem;
+    color: aliceblue;
+}
+
+.cartWidgetStyle {
+    height: 2rem;
+    width: 2rem;
+}
