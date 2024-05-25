@@ -1,0 +1,29 @@
+.navBarStructure {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+  
+    width: 100%;
+    padding: 0.2rem 0 0.2rem 0;
+    border-bottom: 0.2rem solid rgb(159, 60, 60) ;
+    margin: 0 0 0 0;
+}
+
+.firstLevelNavBar {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1.5fr 1fr 1fr;
+    justify-items: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.secondLevelNavBar {
+    display: flex;
+    
+}
+
+.principalMenu {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
