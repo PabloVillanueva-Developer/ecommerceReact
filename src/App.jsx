@@ -16,8 +16,7 @@ function App() {
       <Router>
             <div className='gridStructure'>
                   <Header>
-                        <Navbar />
-                       
+                        <Navbar /> 
                   </Header>
                   <Main>
                         
@@ -28,7 +27,7 @@ function App() {
                   
                   <Routes>
                         <Route exact path='/' element={<ItemListContainer />} />
-                        <Route path='/category/:id' element={<ItemListContainer />} />
+                        <Route path={'/category/:id'} element={<ItemListContainer />} />
                         <Route path='/item/:id' element={<ItemDetailContainer/>} /> 
                         {/*  <ItemListContainer test='Probando envio de props al componente Item ListContainer' /> */}
                   </Routes>
