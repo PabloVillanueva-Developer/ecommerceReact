@@ -19,18 +19,18 @@ function App() {
                         <Navbar /> 
                   </Header>
                   <Main>
-                        
+                        <Routes>
+                              <Route exact path='/' element={<ItemListContainer />} />
+                              <Route path={'/category/:id'} element={<ItemListContainer />} />
+                              <Route path='/item/:id' element={<ItemDetailContainer/>} /> 
+                        </Routes>
+                      
                   </Main>
                   <Footer>
-
+                        
                   </Footer>
                   
-                  <Routes>
-                        <Route exact path='/' element={<ItemListContainer />} />
-                        <Route path={'/category/:id'} element={<ItemListContainer />} />
-                        <Route path='/item/:id' element={<ItemDetailContainer/>} /> 
-                        {/*  <ItemListContainer test='Probando envio de props al componente Item ListContainer' /> */}
-                  </Routes>
+                 
             </div>
       </Router>
   )

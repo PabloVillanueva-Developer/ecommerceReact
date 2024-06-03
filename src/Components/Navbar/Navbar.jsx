@@ -1,6 +1,6 @@
 import './Navbar.css'
 import CartWidget from '../CartWidget/CartWidget'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, useParams } from 'react-router-dom'
 import ItemListContainer from '../ItemListContainer/ItemListContainer'
 import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer'
 import { useEffect, useState } from 'react'
@@ -8,22 +8,27 @@ import { useEffect, useState } from 'react'
 const Navbar = () => {    
 
     const [data, setData] = useState(null)
+  
+    const {id} = useParams()
 
     useEffect( () => {
         try {
             const fetchData = async () => {
             let response = await fetch('https://api.mercadolibre.com/sites/MLA/search?category=MLA1055')
-                
             const dataToJSON = await response.json()
-            const data = setData(dataToJSON)
-            console.log(dataToJSON)
+           
+            const dataToJSONFiltered = [...new Set(dataToJSON.results.map(item => item.attributes[0].value_name))];
+            setData(dataToJSONFiltered)
+        
             }
             fetchData()
         } catch(err) {console.error('Revise su conexion a internet.', err); console.log('hola')}
     },[])
-    
-    
 
+ /*    useEffect(() => {
+        console.log(data)
+
+    },[data]) */
 
 
     return (
@@ -42,14 +47,13 @@ const Navbar = () => {
                             <CartWidget />
                             </div>
                     <div className='secondLevelNavBar'>
-                        {data ? data.results.map(item => 
-                            <div key={item.id}>
-                                  {item.attributes && item.attributes[0] ? <a type="button" className="btn btn-danger">{item.attributes[0].value_name}</a> : 'N/A'}
+                        {data ? data.map((item, index) => 
+                            <div key={index}>
+                                  <Link to={`/category/${item}`} type="button" className="btn btn-danger">{item}</ Link>
                             </div>
 
                         ): 'Cargando...'}
-                            <p>hola</p>
-                            <p>chau</p>
+                           
                     </div>
             </ul>
           
